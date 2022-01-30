@@ -1,0 +1,46 @@
+body{
+    height: fit-content;
+    padding-bottom: 20px;
+}
+
+.card-link{
+    text-decoration: none;
+}
+.card-btns a {
+    color: black;
+    
+}
+.card-btns a:hover{
+    color: white;
+}
+@media (max-width : 991px){
+    .card{
+        width: 100% !important;
+    }
+}
+.highlightsHeader{
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(201, 197, 197);
+}
+.input-group {
+    max-width: 20rem;
+    margin-bottom: 0 !important;
+}
+.fixed-top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 5px rgb(75, 74, 74);
+}
+.card-body-top{
+    padding: 10px 0;
+}
+.card-body-top-content{
+    max-width: 70%;
+}
+.feedImg{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 10px;
+}
