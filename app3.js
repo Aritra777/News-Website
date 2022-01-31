@@ -19,6 +19,7 @@ function onloadFunc() {
     }
     let newsFeedHTML = "";
     let jsonResponse = JSON.parse(this.responseText);
+    console.log(jsonResponse);
     let newsImg; 
     
     jsonResponse.value.forEach((element) => {
@@ -73,7 +74,7 @@ function onloadFunc() {
   function updateSortList(arr){
       // arr = jsonResponce.value;
       let selectBox = document.getElementById("inputGroupSelect02");
-      let str = `<option class="options" selected>Sort By News Channels...</option>`;
+      let str = `<option class="options" value="null" selected>Sort By News Channels...</option>`;
       arr.forEach((e)=>{
           str += `<option class="options" value=${e.provider[0].name}>${e.provider[0].name}</option>` 
       })
@@ -86,12 +87,14 @@ function onloadFunc() {
   let selectBox = document.getElementById("inputGroupSelect02");
   selectBox.addEventListener("change" , ()=>{
     let card =  document.getElementsByClassName("card");
-    Array.from(card).forEach((element) =>{
-     element.style.display = "none";
-    });
+    if(selectBox.value !== "null" ){
+        Array.from(card).forEach((element) =>{
+         element.style.display = "none";
+        });
+    }
     let jsonResponse = JSON.parse(xhr.responseText);
     jsonResponse.value.forEach((e,index)=>{
-        if (e.provider[0].name == selectBox.value) {
+        if (e.provider[0].name.includes(selectBox.value)) {
             card[index].style.display = "flex";
         }
     })
