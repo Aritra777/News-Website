@@ -46,7 +46,7 @@
               <a class="nav-link" href="#">Link</a>
             </li>
           </ul>
-          <form class="d-flex">
+          <form class="d-flex" id="searchForm">
             <div class="input-group">
               <input
                 type="text"
@@ -81,16 +81,24 @@
     <div class="container">
       <div class="highlightsHeader d-flex justify-content-between align-items-center">
         <h2 id="highlights"> News </h2>
-        <div class="input-group mb-3 sortBar">
-          <select class="form-select selectBox" id="inputGroupSelect02">
-            <option class="options" selected>Sort By News Channels...</option>
-            <option class="options" value="MSN">MSN</option>
-            <option class="options" value="MSN.com">MSN.com</option>
-            <option class="options" value="Washington Post">Washington Post</option>
-            <option class="options" value="ABC">ABC</option>
-            <option class="options" value="CBSSports.com">CBSSports.com</option>
-          </select>
-          <button type="button" class="btn btn-outline-info " id="resetBtn">Reset</button>
+        <div class="inputAreas d-flex flex-row w-50 justify-content-evenly">
+          <div class="topicBar" id="topicBar">
+            <select class="form-select selectBox" id="topicInputGroup">
+              <option class="options" value="null" selected>Topic : All</option>
+              <option class="options" value="Business">Business</option>
+              <option class="options" value="Entertainment">Entertainment</option>
+              <option class="options" value="India">India</option>
+              <option class="options" value="LifeStyle">LifeStyle</option>
+              <option class="options" value="ScienceAndTechnology">Science And Technology</option>
+              <option class="options" value="Sports">Sports</option>
+              <option class="options" value="World">World</option>
+            </select>
+          </div>
+          <div class="input-group mb-3 sortBar">
+            <select class="form-select selectBox" id="inputGroupSelect02"></select>
+            <button type="button" class="btn btn-outline-info " id="resetBtn">Reset</button>
+          </div>
+
         </div>
         
       </div>
@@ -99,7 +107,8 @@
     
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- <script src="app.js"></script> -->
-    <script src="app2.js"></script>
+    <!-- <script src="app2.js"></script> -->
+    <script src="app3.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
