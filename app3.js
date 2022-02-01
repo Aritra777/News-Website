@@ -19,7 +19,6 @@ function onloadFunc() {
     }
     let newsFeedHTML = "";
     let jsonResponse = JSON.parse(this.responseText);
-    console.log(jsonResponse);
     let newsImg; 
     
     jsonResponse.value.forEach((element) => {
@@ -73,10 +72,16 @@ function onloadFunc() {
 
   function updateSortList(arr){
       // arr = jsonResponce.value;
+      let channelnames = [];
+        arr.forEach((e)=>{
+            channelnames.push(e.provider[0].name);
+        })
+        sorted(channelnames);
+
       let selectBox = document.getElementById("inputGroupSelect02");
       let str = `<option class="options" value="null" selected>Sort By News Channels...</option>`;
-      arr.forEach((e)=>{
-          str += `<option class="options" value=${e.provider[0].name}>${e.provider[0].name}</option>` 
+      channelnames.forEach((e)=>{
+          str += `<option class="options" value=${e}>${e}</option>` 
       })
       selectBox.innerHTML = str;
 
@@ -123,3 +128,15 @@ searchBtn.addEventListener("click" , ()=>{
         console.log("call");
     }
 })
+
+
+function sorted(arr){
+    for (let i = 0; i < arr.length-1; i++) {
+        for (let j = i+1; j < arr.length; j++) {
+            if (arr[j] === arr[i] ) {
+                arr.splice(j,1);
+            }
+        }
+    }
+    return arr;
+}
