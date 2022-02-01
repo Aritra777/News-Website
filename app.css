@@ -17,6 +17,13 @@ body{
     .card{
         width: 100% !important;
     }
+    .inputAreas{
+        flex-direction: column !important;
+        justify-content: left !important;
+    }
+    #topicBar{
+        margin-bottom: 0.8rem;
+    }
 }
 .highlightsHeader{
     width: 100%;
