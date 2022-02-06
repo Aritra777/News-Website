@@ -22,37 +22,39 @@ function IndiacoronaData() {
       Itotal.innerHTML = response[0].confirmed;
       Ideaths.innerHTML = response[0].deaths;
       Irecovered.innerHTML = response[0].recovered;
+      WorldcoronaData();
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
-async function WorldcoronaData() {
-  setTimeout(() => {
-    fetch("https://covid-19-data.p.rapidapi.com/totals", {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
-        "x-rapidapi-key": "f376382cf5msh50b2db38919edf6p1b1f22jsnd1afad0e3f31",
-      },
-    })
+function WorldcoronaData() {
+
+  fetch("https://corona-virus-world-and-india-data.p.rapidapi.com/api", {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
+      "x-rapidapi-key": "f376382cf5msh50b2db38919edf6p1b1f22jsnd1afad0e3f31"
+    }
+  })
       .then((response) => {
         return response.json();
       })
       .then((response) => {
-        Wtotal.innerHTML = response[0].confirmed;
-        Wdeaths.innerHTML = response[0].deaths;
-        Wrecovered.innerHTML = response[0].recovered;
+        console.log(response);
+
+        Wtotal.innerHTML = response.world_total.total_cases;
+        Wdeaths.innerHTML = response.world_total.total_deaths;
+        Wrecovered.innerHTML = response.world_total.total_recovered;
       })
       .catch((error) => {
         console.log(error);
       });
-  }, 1000);
+  
 }
 
 IndiacoronaData();
-// WorldcoronaData();
 
 let url =
   "https://bing-news-search1.p.rapidapi.com/news/search?count=4&q=Corona&freshness=Day&textFormat=Raw&safeSearch=Off";
