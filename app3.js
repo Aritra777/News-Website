@@ -27,7 +27,7 @@ function onloadFunc() {
         }
         else newsImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSdT-CMjPc50R-jKEvJl_rcn3mBMvkcUwERg&usqp=CAU";
       newsFeedHTML += `
-                      <div class="card my-3" style="width: 70%;">
+                      <div class="card my-3" style="width: 60%;">
                       <div class="card-body">
                       <div class = "card-body-top d-flex justify-content-between flex-row">
                       <div class="card-body-top-content">
@@ -46,7 +46,7 @@ function onloadFunc() {
     });
   
     let newsSection = document.getElementById("newsfeed");
-    newsSection.innerHTML = newsFeedHTML;
+    newsSection.innerHTML += newsFeedHTML;
     updateSortList(jsonResponse.value);
 };
 
