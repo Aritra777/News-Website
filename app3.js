@@ -20,7 +20,7 @@ function onloadFunc() {
     let newsFeedHTML = "";
     let jsonResponse = JSON.parse(this.responseText);
     let newsImg; 
-    
+
     jsonResponse.value.forEach((element) => {
         if('image' in element){
             newsImg = element.image.thumbnail.contentUrl;
@@ -46,7 +46,7 @@ function onloadFunc() {
     });
   
     let newsSection = document.getElementById("newsfeed");
-    newsSection.innerHTML += newsFeedHTML;
+    newsSection.innerHTML = newsFeedHTML;
     updateSortList(jsonResponse.value);
 };
 
@@ -57,7 +57,7 @@ function onloadFunc() {
 
     let topicInputGroupVal = topicInputGroup.value;
     if(topicInputGroupVal != "null"){
-        xhr.open("GET", `https://bing-news-search1.p.rapidapi.com/news?count=20&category=${topicInputGroupVal}&mkt=en-IN&safeSearch=Off&textFormat=Raw`);
+        xhr.open("GET", `https://bing-news-search1.p.rapidapi.com/news?category=${topicInputGroupVal}&mkt=en-IN&safeSearch=Off&textFormat=Raw`);
     }
     else xhr.open("GET", "https://bing-news-search1.p.rapidapi.com/news?&mkt=en-IN&safeSearch=Off&textFormat=Raw");
     
@@ -140,3 +140,40 @@ function sorted(arr){
     }
     return arr;
 }
+
+// --------Navbar Function---------->
+let navbar = document.getElementById("navbar");
+let navbarHight = navbar.clientHeight;
+
+window.addEventListener("scroll" , ()=>{
+  if (window.pageYOffset>navbarHight) {
+    navbar.classList.add("fixed-top");
+  }
+  if (window.pageYOffset < navbarHight) {
+    navbar.classList.remove("fixed-top");
+  }
+})
+
+
+function getCoronaNews(){
+    xhr.open("GET","https://bing-news-search1.p.rapidapi.com/news/search?q=Corona&freshness=Day&textFormat=Raw&safeSearch=Off");
+    xhr.setRequestHeader("x-bingapis-sdk", "true");
+    xhr.setRequestHeader("x-rapidapi-host", "bing-news-search1.p.rapidapi.com");
+    xhr.setRequestHeader("x-rapidapi-key", "f376382cf5msh50b2db38919edf6p1b1f22jsnd1afad0e3f31");
+    xhr.send(null);
+    xhr.onload = onloadFunc;
+    
+}
+
+let Cbtn = document.getElementById('btnForCNewsinMobile');
+let coronasecInMobile = document.getElementsByClassName('coronasecInMobile')[0];
+Cbtn.addEventListener("click" , ()=>{
+    let coronaCard = document.getElementsByClassName('mycard')[0];
+    coronasecInMobile.innerHTML = coronaCard.innerHTML;
+})
+
+window.addEventListener("resize", ()=>{
+    if (screen.width>991) {
+        coronasecInMobile.innerHTML = "";
+    }
+})

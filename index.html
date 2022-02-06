@@ -78,7 +78,7 @@
       <h1 id="heading">Welcome to News Feed</h1>
       <hr />
     </div>
-    <div class="container mx-0">
+    <div class="container">
       <div class="highlightsHeader d-flex justify-content-between align-items-center">
         <h2 id="highlights"> News </h2>
 
@@ -108,44 +108,51 @@
         </div>
         
       </div>
-      <div class="newsfeed" id="newsfeed">
+      <div class="coronasecInMobile"></div>
+      <div class="newsfeed" id="newsfeed"></div>
 
-      <div class="card mycard">
-        <h5 class="card-header">Featured</h5>
-        <div class="card-body">
-          <h5 class="card-title">Corona Update: India 
-            <img id="coronaLogo" src="./COVID19 red logo.png" alt="Error">
-          </h5>
-          <div class="Datas">
-            <div class="IndiaData">
-              <p class="h5 " id="Iheading">India</p>
-              <ul class="Ilist">
-                <li>Total Case <span id="Itotal"></span></li>
-                <li>Deaths : </li><span id="Ideaths"></span></li>
-                <li>Recovered: <span id="Irecovered"></span></li>
-              </ul>
+      <div class="coronaSec">
+        <div class="mycard">
+          <h5 class="card-header">Featured</h5>
+          <div class="card-body">
+            <h5 class="card-title">Corona Update: India 
+              <img id="coronaLogo" src="./COVID19 red logo.png" alt="Error">
+            </h5>
+            <div class="Datas">
+              <div class="IndiaData Data">
+                <p class="h5 " id="Iheading">India</p>
+                <ul class="Ilist">
+                  <li class="bold" >Total Case: <span id="Itotal"></span></li>
+                  <li class="bold" >Deaths : <span id="Ideaths"></span></li>
+                  <li class="bold" >Recovered: <span id="Irecovered"></span></li>
+                </ul>
+              </div><hr>
+              <div class="WorldData Data">
+                <p class="h5 " id="Wheading">World</p>
+                <ul class="Wlist">
+                  <li class="bold" >Total Case: <span id="Wtotal"></span></li>
+                  <li class="bold" >Deaths: <span id="Wdeaths"></span></li>
+                  <li class="bold" >Recovered: <span id="Wrecovered"></span></li>
+                </ul>
+              </div>
             </div>
-            <div class="WorldData">
-              <p class="h5 " id="Wheading">World</p>
-              <ul class="Wlist">
-                <li>Total Case <span id="Wtotal"></span></li>
-                <li>Deaths : </li><span id="Wdeaths"></span></li>
-                <li>Recovered: <span id="Wrecovered"></span></li>
-              </ul>
-            </div>
+            <a href="#" class="btn btn-outline-dark" onclick= getCoronaNews() >India's Corona News</a>
           </div>
-          <a href="#" class="btn btn-outline-dark">India's Corona News</a>
         </div>
+        <div class="coronaNews w-10" id="coronaNews"></div>
       </div>
-
     </div>
-    </div>
+    <button class="btnForCNewsinMobile" id="btnForCNewsinMobile">
+      Corona Update
+      <!-- <img id="btnimg" src="./download.jpg"
+       alt="Error"> -->
+    </button>
     
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- <script src="app.js"></script> -->
     <!-- <script src="app2.js"></script> -->
-    <script src="app3.js"></script>
-    <script src="app3b.js"></script>
+    <script src="./app3.js"></script>
+    <script src="./app3b.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
