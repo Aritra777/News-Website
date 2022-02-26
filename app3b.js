@@ -7,53 +7,37 @@ let Wtotal = document.getElementById("Wtotal");
 let Wdeaths = document.getElementById("Wdeaths");
 let Wrecovered = document.getElementById("Wrecovered");
 
-function IndiacoronaData() {
-  fetch("https://covid-19-data.p.rapidapi.com/country/code?code=IN", {
-    method: "GET",
-    headers: {
-      "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
-      "x-rapidapi-key": "f376382cf5msh50b2db38919edf6p1b1f22jsnd1afad0e3f31",
-    },
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      Itotal.innerHTML = response[0].confirmed;
-      Ideaths.innerHTML = response[0].deaths;
-      Irecovered.innerHTML = response[0].recovered;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+function IndiacoronaData(Obj) {
+      Itotal.innerHTML = Obj.cases;
+      Ideaths.innerHTML = Obj.deaths;
+      Irecovered.innerHTML = Obj.total_recovered;      
 }
 
-async function WorldcoronaData() {
-  setTimeout(() => {
-    fetch("https://covid-19-data.p.rapidapi.com/totals", {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
-        "x-rapidapi-key": "f376382cf5msh50b2db38919edf6p1b1f22jsnd1afad0e3f31",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        Wtotal.innerHTML = response[0].confirmed;
-        Wdeaths.innerHTML = response[0].deaths;
-        Wrecovered.innerHTML = response[0].recovered;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, 1000);
+function WorldcoronaData(Obj) {
+        Wtotal.innerHTML = Obj.total_cases;
+        Wdeaths.innerHTML = Obj.total_deaths;
+        Wrecovered.innerHTML = Obj.total_recovered;  
 }
 
-IndiacoronaData();
-// WorldcoronaData();
+fetch("https://corona-virus-world-and-india-data.p.rapidapi.com/api", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
+		"x-rapidapi-key": "f376382cf5msh50b2db38919edf6p1b1f22jsnd1afad0e3f31"
+	}
+})
+.then(response => {
+	return response.json();
+})
+.then(data =>{
+  IndiacoronaData(data.countries_stat[1]);
+  WorldcoronaData(data.world_total);
+})
+.catch(err => {
+	console.error(err);
+});
 
+// Corona News ---->
 let url =
   "https://bing-news-search1.p.rapidapi.com/news/search?count=4&q=Corona&freshness=Day&textFormat=Raw&safeSearch=Off";
 let params = {
