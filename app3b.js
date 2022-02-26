@@ -8,21 +8,21 @@ let Wdeaths = document.getElementById("Wdeaths");
 let Wrecovered = document.getElementById("Wrecovered");
 
 function IndiacoronaData(Obj) {
-      Itotal.innerHTML = Obj.cases;
-      Ideaths.innerHTML = Obj.deaths;
-      Irecovered.innerHTML = Obj.total_recovered;      
+      Itotal.innerHTML = Obj.TotalCases;
+      Ideaths.innerHTML = Obj.TotalDeaths;
+      Irecovered.innerHTML = Obj.TotalRecovered;      
 }
 
 function WorldcoronaData(Obj) {
-        Wtotal.innerHTML = Obj.total_cases;
-        Wdeaths.innerHTML = Obj.total_deaths;
-        Wrecovered.innerHTML = Obj.total_recovered;  
+        Wtotal.innerHTML = Obj.TotalCases;
+        Wdeaths.innerHTML = Obj.TotalDeaths;
+        Wrecovered.innerHTML = Obj.TotalRecovered;  
 }
 
-fetch("https://corona-virus-world-and-india-data.p.rapidapi.com/api", {
+fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/", {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
+		"x-rapidapi-host": "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com",
 		"x-rapidapi-key": "f376382cf5msh50b2db38919edf6p1b1f22jsnd1afad0e3f31"
 	}
 })
@@ -30,12 +30,9 @@ fetch("https://corona-virus-world-and-india-data.p.rapidapi.com/api", {
 	return response.json();
 })
 .then(data =>{
-  IndiacoronaData(data.countries_stat[1]);
-  WorldcoronaData(data.world_total);
+  IndiacoronaData(data[3]);
+  WorldcoronaData(data[1]);
 })
-.catch(err => {
-	console.error(err);
-});
 
 // Corona News ---->
 let url =
